@@ -8,22 +8,22 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class FileConnection {
-    boolean isConnected = false;
+    boolean connected = false;
     String file;
     public FileConnection(String file) {
         this.file = file;
     }
 
     public void connect() throws DBFailException {
-        this.isConnected = true;
+        this.connected = true;
         Random rand = new Random();
         if(rand.nextDouble() < 0.25) {
             throw new DBFailException();
         }
     }
 
-    public String getData() throws NotConnectedException {
-        if(!this.isConnected) {
+    public String getData() throws NotConnectedException, FileReadException {
+        if(!this.connected) {
             throw new NotConnectedException();
 
         }
@@ -38,13 +38,14 @@ public class FileConnection {
             }
 
         } catch (FileNotFoundException e) {
-            System.out.println("Masz się zabrać za czytanie!");
+            this.connected = false;
+            throw new FileReadException();
         }
 
         return String.join("\n", lineList);
     }
     public void disconnect() {
-        this.isConnected = false;
+        this.connected = false;
 
     }
 
