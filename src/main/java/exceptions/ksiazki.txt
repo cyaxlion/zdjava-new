@@ -1,0 +1,4 @@
+Rusz głową! Java;2002
+DDD. Kompedium wiedzy;2005
+Wzorce Projektowe;1980
+Praca z zastanym kodem;2000
