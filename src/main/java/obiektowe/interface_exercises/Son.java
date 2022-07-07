@@ -1,4 +1,4 @@
-package interface_exercises;
+package obiektowe.interface_exercises;
 
 public class Son implements FamilyMember {
     @Override

@@ -1,4 +1,4 @@
-package interface_exercises;
+package obiektowe.interface_exercises;
 
 public class Father implements FamilyMember {
     @Override

@@ -1,4 +1,4 @@
-package interface_exercises;
+package obiektowe.interface_exercises;
 
 import java.util.ArrayList;
 import java.util.List;
