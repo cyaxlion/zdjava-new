@@ -1,5 +1,6 @@
 package hotel;
 
+import javax.swing.*;
 import java.util.Scanner;
 
 public class Main {
@@ -10,6 +11,9 @@ public class Main {
         UserService service = new UserService(hotel);
         Scanner input = new Scanner(System.in);
 
+        System.out.println("Podaj rok urodzenia:");
+        Integer age = input.nextInt();
+        
         /**
          * Wyswietl liste pokoi (wolny-zajety)
          * wyswietl liste dostepnych pkoi
@@ -38,14 +42,20 @@ public class Main {
                 }
                 case 3: {
                     Integer roomId = requestRoomId(input);
-                    if(hotel.rooms.get(roomId) == null)  {
+                    Room room = hotel.rooms.get(roomId);
+                    if(room == null)  {
                         System.out.println("Pokój nie istnieje!");
+                        break;
+                    }
+                    if(!room.isClean) {
+                        System.out.println("Nie można zarezerwować pokoju, który nie jest czysty! Wybierz inny pokój.");
                         break;
                     }
                     boolean roomIsReserved = service.reserve(roomId);
                     if(!roomIsReserved) {
                         System.out.println("Nie można zarezerwować pokoju, który jest już zarezerwowany!");
                     } else {
+
                         System.out.println("Pomyślnie zarezerwowano pokój!");
                     }
                     break;
@@ -74,6 +84,8 @@ public class Main {
 
 
     }
+
+
 
     public static Integer requestRoomId(Scanner scanner) {
         System.out.println("Wprowadź numer pokoju: ");

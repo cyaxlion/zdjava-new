@@ -1,2 +1,6 @@
-package after.builder;public interface Punch {
+package after.builder;
+
+public interface Punch {
+
+    void punch();
 }
